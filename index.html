@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COC — Centro Olímpico de Conhecimento | IFTO Campus Araguaína</title>
+
+    <!-- SEO & Meta Tags -->
+    <meta name="description"
+        content="Centro Olímpico de Conhecimento (COC) — preparação de excelência para as olimpíadas brasileiras: Matemática, Física, Química, Biologia, História, Robótica e mais. IFTO Campus Araguaína.">
+    <meta name="keywords"
+        content="COC, Centro Olímpico, Olimpíadas do Conhecimento, OBMEP, OBF, OBQ, OBB, IFTO, Araguaína, preparatório olímpico">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Atkinson Hyperlegible', 'sans-serif'],
+                        serif: ['Crimson Pro', 'serif'],
+                    },
+                    colors: {
+                        // Verde da identidade COC (cor primária - do átomo/órbita)
+                        brand: {
+                            50: '#f1f8ea',
+                            100: '#dceec7',
+                            200: '#bfdf9e',
+                            300: '#9cce70',
+                            400: '#7fbd46',
+                            500: '#65A624', // Verde vibrante (paleta oficial)
+                            600: '#548C3A', // Verde sage - PRIMARY (paleta oficial)
+                            700: '#487329', // Verde escuro (paleta oficial)
+                            800: '#3a5d23',
+                            900: '#2e4a1d', // Text
+                            950: '#1a2b0f',
+                        },
+                        // Vermelho do foguete (cor de ação/CTA)
+                        rocket: {
+                            50: '#fdeeef',
+                            100: '#fadadd',
+                            200: '#f5b8be',
+                            300: '#ee8791',
+                            400: '#e4566a',
+                            500: '#D93B48', // Principal (paleta oficial)
+                            600: '#c22a38',
+                            700: '#a31f2c',
+                            800: '#861c28',
+                            900: '#721c26',
+                        },
+                        ink: '#0D0D0D', // Preto (paleta oficial)
+                    },
+                    animation: {
+                        'spin-slow': 'spin 20s linear infinite',
+                        'spin-reverse': 'spin-reverse 30s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'launch': 'launch 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'spin-reverse': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(-360deg)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        'launch': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(-2deg)' },
+                            '50%': { transform: 'translateY(-8px) rotate(2deg)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Animação Scroll Fade-In (Estilo Lumina) */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(8px);
+            transition: opacity 0.8s, transform 0.8s, filter 0.8s;
+            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        /* Barra decorativa superior - Áreas do Conhecimento (inspirada na órbita atômica da logo) */
+        .knowledge-bar {
+            display: flex;
+            height: 6px;
+            width: 100%;
+        }
+
+        .knowledge-color {
+            flex: 1;
+        }
+
+        .k-math {
+            background-color: #D93B48;
+        }
+
+        .k-physics {
+            background-color: #65A624;
+        }
+
+        .k-chemistry {
+            background-color: #548C3A;
+        }
+
+        .k-biology {
+            background-color: #487329;
+        }
+
+        .k-history {
+            background-color: #8B4513;
+        }
+
+        .k-astronomy {
+            background-color: #1E3A8A;
+        }
+
+        .k-robotics {
+            background-color: #6B7280;
+        }
+
+        .k-geography {
+            background-color: #0891B2;
+        }
+
+        .k-linguistics {
+            background-color: #A855F7;
+        }
+
+        .k-informatics {
+            background-color: #F59E0B;
+        }
+
+        /* Glass card - nav e elementos flutuantes */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* Fundo pontilhado */
+        .bg-pattern {
+            background-color: #f1f8ea;
+            background-image: radial-gradient(#7fbd46 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Fundo dark pontilhado */
+        .bg-pattern-dark {
+            background-color: #2e4a1d;
+            background-image: radial-gradient(#65A624 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Gradiente de foguete */
+        .rocket-trail {
+            background: linear-gradient(180deg, transparent 0%, #D93B48 40%, #F59E0B 100%);
+        }
+
+        /* Marquee animation */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 40s linear infinite;
+        }
+
+        .pause-marquee:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
+        /* Órbita atômica */
+        .orbit-ring {
+            border: 2px dashed rgba(101, 166, 36, 0.45);
+        }
+
+        /* Hero gradient escuro - now used globally */
+        .hero-gradient {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1a2b0f 50%, #0D0D0D 100%);
+        }
+
+        /* Glass card dark mode */
+        .glass-card-dark {
+            /* brand-50: #f1f8ea (rgba 241, 248, 234) com baixa opacidade */
+            background-color: rgba(241, 248, 234, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            /* brand-100: #dceec7 (rgba 220, 238, 199) */
+            border: 1px solid rgba(220, 238, 199, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== Global Rain / Space Travel Effect ===== */
+        /* Falling beams — vertical gradient lines traveling downward */
+        @keyframes beam-fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(120vh);
+                opacity: 0;
+            }
+        }
+
+        .animate-beam-1 {
+            animation: beam-fall 6s linear infinite;
+            animation-delay: 0s;
+        }
+
+        .animate-beam-2 {
+            animation: beam-fall 8s linear infinite;
+            animation-delay: 2s;
+        }
+
+        .animate-beam-3 {
+            animation: beam-fall 7s linear infinite;
+            animation-delay: 4s;
+        }
+
+        .animate-beam-4 {
+            animation: beam-fall 9s linear infinite;
+            animation-delay: 1s;
+        }
+
+        .animate-beam-5 {
+            animation: beam-fall 5.5s linear infinite;
+            animation-delay: 3s;
+        }
+
+        .animate-beam-6 {
+            animation: beam-fall 10s linear infinite;
+            animation-delay: 0.5s;
+        }
+
+        .animate-beam-7 {
+            animation: beam-fall 6.5s linear infinite;
+            animation-delay: 5s;
+        }
+
+        .animate-beam-8 {
+            animation: beam-fall 8.5s linear infinite;
+            animation-delay: 2.5s;
+        }
+
+        /* Star field — tiny dots drifting */
+        @keyframes star-drift {
+            0% {
+                transform: translateY(-10px) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            border-radius: 9999px;
+            background: #65A624;
+            animation: star-drift linear infinite;
+            pointer-events: none;
+        }
+
+        /* Warp-speed radial burst around logo */
+        @keyframes warp-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.4;
+            }
+        }
+
+        .warp-glow {
+            animation: warp-ring 4s ease-in-out infinite;
+        }
+
+        /* Global grid overlay (vertical lines spanning the full page) */
+        .hero-grid-lines {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-grid-col {
+            flex: 1;
+            border-left: 1px solid rgba(101, 166, 36, 0.07);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid-col:last-child {
+            border-right: 1px solid rgba(101, 166, 36, 0.07);
+        }
+
+        /* ===== Section Glass Backgrounds — REMOVED (using light bg) ===== */
+
+        /* radial accent glows for the beam layer */
+        #global-space-bg {
+            pointer-events: none;
+        }
+
+        /* FAQ details marker */
+        details>summary {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] .faq-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-brand-100 bg-brand-950 antialiased selection:bg-brand-500/30 selection:text-white">
+
+    <!-- Global Base Background -->
+    <div class="fixed inset-0 z-0 hero-gradient"></div>
+
+    <!-- Imagens de Fundo do Lumina (Texturização e Profundidade) -->
+    <div class="fixed inset-0 z-[5] pointer-events-none"
+        style="mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)">
+        <!-- Landscape (Base Light/Mesh) -->
+        <img alt="Space Landscape"
+            class="absolute top-0 left-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
+            src="assets/Gemini_Generated_Image_h9v17ih9v17ih9v1.png" />
+
+        <!-- Efeito Lumina: Laterais/Bordas escurecidas e Centro iluminado -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 via-transparent to-[#0D0D0D]/90"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/90 via-[#0D0D0D]/60 to-[#0D0D0D]"></div>
+        <div
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-500/15 via-[#0D0D0D]/0 to-[#0D0D0D]/0">
+        </div>
+    </div>
+
+    <!-- Global Rain / Space Travel Overlay (above bg, below sections) -->
+    <div class="fixed inset-0 z-10 pointer-events-none" id="global-space-bg">
+        <!-- Vertical guide lines -->
+        <div class="hero-grid-lines" style="opacity:0.6; height:100%">
+            <div class="hero-grid-col" style="border-left-color: rgba(101,166,36,0.15);"></div>
+            <div class="hero-grid-col" style="border-left-color: rgba(101,166,36,0.15);">
+                <!-- Beam verde #1 -->
+                <div
+                    class="absolute top-0 -left-[1px] w-[2px] h-72 bg-gradient-to-b from-transparent via-brand-500/80 to-transparent animate-beam-1">
+                </div>
+                <!-- Beam verde extra -->
+                <div class="absolute top-0 -left-[1px] w-[2px] h-48 bg-gradient-to-b from-transparent via-brand-400/60 to-transparent animate-beam-6"
+                    style="left:35%;"></div>
+            </div>
+            <div class="hero-grid-col" style="border-left-color: rgba(101,166,36,0.15);">
+                <!-- Beam vermelho #1 -->
+                <div
+                    class="absolute top-0 -left-[1px] w-[2px] h-[28rem] bg-gradient-to-b from-transparent via-rocket-500/70 to-transparent animate-beam-2">
+                </div>
+            </div>
+            <div class="hero-grid-col" style="border-left-color: rgba(101,166,36,0.15);">
+                <!-- Beam verde #2 -->
+                <div
+                    class="absolute top-0 -left-[1px] w-[2px] h-56 bg-gradient-to-b from-transparent via-brand-500/80 to-transparent animate-beam-3">
+                </div>
+                <!-- Beam vermelho extra -->
+                <div class="absolute top-0 -left-[1px] w-[2px] h-36 bg-gradient-to-b from-transparent via-rocket-400/60 to-transparent animate-beam-7"
+                    style="left:65%;"></div>
+            </div>
+            <div class="hero-grid-col" style="border-left-color: rgba(101,166,36,0.15);">
+                <!-- Beam vermelho #2 -->
+                <div
+                    class="absolute top-0 -left-[1px] w-[2px] h-80 bg-gradient-to-b from-transparent via-rocket-500/80 to-transparent animate-beam-4">
+                </div>
+            </div>
+            <div class="hero-grid-col" style="border-left-color: rgba(101,166,36,0.15);">
+                <!-- Beam verde #3 -->
+                <div
+                    class="absolute top-0 -left-[1px] w-[2px] h-64 bg-gradient-to-b from-transparent via-brand-500/70 to-transparent animate-beam-5">
+                </div>
+                <!-- Beam verde claro -->
+                <div class="absolute top-0 -left-[1px] w-[2px] h-44 bg-gradient-to-b from-transparent via-brand-400/50 to-transparent animate-beam-8"
+                    style="left:50%;"></div>
+            </div>
+            <div class="hero-grid-col"
+                style="border-left-color: rgba(101,166,36,0.15); border-right-color: rgba(101,166,36,0.15);"></div>
+        </div>
+        <!-- Star / particle field -->
+        <div class="absolute inset-0 overflow-hidden" id="star-field"></div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- 1) HERO SECTION                                               -->
+    <!-- =========================================================== -->
+    <section class="relative min-h-[92vh] flex items-center z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-8 lg:py-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="space-y-8">
+
+                    <h1 class="font-serif text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] text-white">
+                        Lance seu
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-rocket-400 to-rocket-600">conhecimento</span>
+                        ao <span class="text-brand-400">sucesso</span>.
+                    </h1>
+
+                    <p class="text-xl text-slate-300 max-w-2xl leading-relaxed text-justify w-full">
+                        Descubra como as <strong class="text-white">Olimpíadas do Conhecimento</strong> podem
+                        transformar seu currículo, garantir bolsas de iniciação científica e facilitar sua entrada nas
+                        melhores universidades do país. Preparação 100% gratuita.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <a href="#inscricao"
+                                class="bg-rocket-500 hover:bg-rocket-600 text-white px-8 py-4 rounded-lg font-bold transition-all duration-200 text-center flex items-center justify-center gap-2 shadow-[0_0_20px_-5px_rgba(217,59,72,0.6)] hover:shadow-[0_0_30px_-5px_rgba(217,59,72,0.8)] hover:-translate-y-0.5 hover:scale-105 active:scale-95 group w-full sm:w-auto">
+                                <i data-lucide="rocket"
+                                    class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+                                <span>Quero me Preparar Gratuitamente</span>
+                            </a>
+                            <a href="#trilhas"
+                                class="bg-transparent hover:bg-brand-500/10 border-2 border-brand-500/30 text-brand-100/80 hover:text-white px-6 py-4 rounded-lg font-bold transition-all duration-200 text-center flex items-center justify-center gap-2 hover:scale-105 active:scale-95 group w-full sm:w-auto">
+                                <i data-lucide="compass" class="w-5 h-5"></i>
+                                <span>Acessar as Trilhas</span>
+                            </a>
+                        </div>
+                        <p
+                            class="text-xs text-brand-100/50 mt-3 flex items-center gap-1 justify-center sm:justify-start">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i> Cadastro rápido em 30 segundos. Sem
+                            compromisso financeiro.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Element: Logo COC com Warp Glow -->
+                <div class="relative flex justify-center items-center lg:justify-end">
+                    <div class="relative flex items-center justify-center">
+                        <!-- Speed lines radiating outward -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div class="absolute w-[2px] h-24 bg-gradient-to-b from-brand-500/60 via-brand-400/30 to-transparent -top-28 left-1/2 -translate-x-1/2 animate-beam-1"
+                                style="animation-duration: 3s;"></div>
+                            <div class="absolute w-[2px] h-20 bg-gradient-to-b from-rocket-500/50 via-rocket-400/20 to-transparent -top-24 left-[35%] animate-beam-3"
+                                style="animation-duration: 4s;"></div>
+                            <div class="absolute w-[2px] h-16 bg-gradient-to-b from-brand-400/40 to-transparent -top-20 left-[65%] animate-beam-5"
+                                style="animation-duration: 3.5s;"></div>
+                        </div>
+
+                        <!-- Logo COC -->
+                        <video src="foguete.webm" poster="Logo OFICIAL.webp" autoplay loop muted playsinline
+                            class="relative z-10 w-full max-w-[550px] lg:max-w-[750px] xl:max-w-[900px] scale-125 md:scale-[1.35] lg:scale-[1.6] h-auto"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================== -->
+    <!-- TRUST BADGES                                                  -->
+    <!-- =========================================================== -->
+    <div class="relative z-20 bg-brand-900/40 border-y border-brand-500/20 py-4 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-sm md:text-base font-bold text-brand-100/90">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="building-2" class="w-5 h-5 text-brand-400"></i>
+                    <span>Iniciativa oficial do IFTO</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-400"></i>
+                    <span>Professores Especialistas</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="badge-check" class="w-5 h-5 text-brand-400"></i>
+                    <span>100% Gratuito</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================== -->
+    <!-- 2) SOBRE NÓS                                                  -->
+    <!-- =========================================================== -->
+    <section id="sobre" class="py-8 lg:py-12 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Text Content -->
+            <div class="w-full mb-12">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-justify w-full">
+                    Formando pensadores críticos, <span class="text-rocket-400">medalhistas</span> e cidadãos
+                    inovadores.
+                </h2>
+                <div class="text-lg text-brand-100/80 leading-relaxed mb-6 space-y-4 text-justify w-full">
+                    <p>O <strong class="text-brand-300">Centro Olímpico de Conhecimento (COC)</strong> do IFTO Campus
+                        Araguaína nasceu da convicção de que o talento brasileiro merece preparação de ponta.</p>
+
+                    <ul class="space-y-4 mt-6 text-base md:text-lg">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white">Identificação e desenvolvimento:</strong> Potencializamos
+                                estudantes para as maiores olimpíadas do país.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white">Aprendizado aprofundado:</strong> Foco em pensamento
+                                crítico e resolução de problemas reais.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-6 h-6 text-brand-400 shrink-0 mt-0.5"></i>
+                            <span><strong class="text-white">Formação cidadã:</strong> Mais do que medalhas, preparamos
+                                jovens inovadores para o futuro com excelência.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cards: Benefícios (Foco em Conversão) -->
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Benefício 1 -->
+                <div
+                    class="glass-card-dark rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 rounded-bl-full -mr-8 -mt-8 z-0"></div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 shadow-sm flex items-center justify-center text-brand-400 mb-5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="piggy-bank" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-white mb-3 text-justify w-full">Custo Zero</h3>
+                        <p class="text-brand-100/70 leading-relaxed text-justify w-full">
+                            Toda a preparação, mentorias e materiais de estudo são 100% gratuitos para alunos da rede
+                            pública e do IFTO. Seu único investimento é a dedicação.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefício 2 -->
+                <div
+                    class="glass-card-dark rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300 border border-brand-500/20 shadow-[0_0_20px_-10px_rgba(101,166,36,0.3)]">
+                    <div class="absolute bottom-0 right-0 w-32 h-32 bg-rocket-500/10 rounded-tl-full -mr-8 -mb-8 z-0">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-rocket-900/50 shadow-sm flex items-center justify-center text-rocket-400 mb-5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="award" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-white mb-3 text-justify w-full">Diferencial no
+                            Currículo</h3>
+                        <p class="text-brand-100/70 leading-relaxed text-justify w-full">
+                            Medalhas olímpicas abrem portas para as melhores universidades do Brasil (vagas olímpicas na
+                            USP, Unicamp, Unesp) e facilitam bolsas no exterior.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Benefício 3 -->
+                <div
+                    class="glass-card-dark rounded-2xl p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-brand-500/10 rounded-tr-full -ml-8 -mb-8 z-0">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 shadow-sm flex items-center justify-center text-brand-400 mb-5 group-hover:scale-110 transition-transform">
+                            <i data-lucide="microscope" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-2xl text-white mb-3 text-justify w-full">Iniciação
+                            Científica</h3>
+                        <p class="text-brand-100/70 leading-relaxed text-justify w-full">
+                            Alunos de destaque nas trilhas de preparação recebem apoio para pleitear bolsas de iniciação
+                            científica remuneradas ainda no ensino médio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================================================== -->
+    <!-- 5) CASOS DE SUCESSO & DEPOIMENTOS                             -->
+    <!-- =========================================================== -->
+    <!-- <section id="depoimentos" class="py-8 lg:py-12 relative overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full mb-12">
+                <span class="text-brand-400 font-bold tracking-wider uppercase text-sm mb-3 block">04 — Histórias de
+                    sucesso</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-justify w-full">
+                    Inspire-se com quem <span class="text-rocket-400">decolou</span> com o COC.
+                </h2>
+                <p class="text-lg text-brand-100/80 leading-relaxed">
+                    Medalhas conquistadas, universidades de ponta alcançadas e vidas transformadas. Conheça as
+                    trajetórias dos nossos alunos.
+                </p>
+            </div>
+
+             Grid de Depoimentos
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        Depoimento 1 
+        <article
+            class="glass-card-dark rounded-2xl p-8 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+            <div class="flex items-center gap-2 mb-4 text-rocket-400">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <div class="mb-5">
+                <i data-lucide="quote" class="w-8 h-8 text-brand-500/40 mb-3"></i>
+                <p class="text-brand-100/90 leading-relaxed italic">
+                    "A preparação do COC foi decisiva. As mentorias individuais me ajudaram a superar travas em
+                    Matemática e conquistei ouro na OBMEP. Hoje curso Engenharia na USP."
+                </p>
+            </div>
+            <div class="mt-auto flex items-center gap-4 pt-5 border-t border-brand-500/20">
+                <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                    JS</div>
+                <div class="flex-1">
+                    <p class="font-bold text-white text-sm">Julia Silva</p>
+                    <p class="text-xs text-brand-100/60">Medalha de Ouro OBMEP · USP</p>
+                </div>
+                <span
+                    class="inline-flex items-center rounded-md bg-rocket-500/20 px-2 py-1 text-xs font-semibold text-rocket-400 ring-1 ring-rocket-500/30">
+                    <i data-lucide="medal" class="w-3 h-3 mr-1"></i>
+                    Ouro
+                </span>
+            </div>
+        </article>
+
+         Depoimento 2
+        <article
+            class="glass-card-dark rounded-2xl p-8 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+            <div class="flex items-center gap-2 mb-4 text-rocket-400">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <div class="mb-5">
+                <i data-lucide="quote" class="w-8 h-8 text-brand-500/40 mb-3"></i>
+                <p class="text-brand-100/90 leading-relaxed italic">
+                    "Os simulados e os materiais do COC são incomparáveis. Ganhei prata na OBF e essa conquista
+                    abriu portas para bolsas de iniciação científica aqui no IFTO."
+                </p>
+            </div>
+            <div class="mt-auto flex items-center gap-4 pt-5 border-t border-brand-500/20">
+                <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-br from-rocket-500 to-rocket-700 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                    RM</div>
+                <div class="flex-1">
+                    <p class="font-bold text-white text-sm">Rafael Moraes</p>
+                    <p class="text-xs text-brand-100/60">Medalha de Prata OBF · IFTO</p>
+                </div>
+                <span
+                    class="inline-flex items-center rounded-md bg-brand-100/10 px-2 py-1 text-xs font-semibold text-brand-100 ring-1 ring-brand-400/30">
+                    <i data-lucide="medal" class="w-3 h-3 mr-1"></i>
+                    Prata
+                </span>
+            </div>
+        </article>
+
+         Depoimento 3 (Pai)
+        <article
+            class="glass-card-dark rounded-2xl p-8 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+            <div class="flex items-center gap-2 mb-4 text-rocket-400">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <div class="mb-5">
+                <i data-lucide="quote" class="w-8 h-8 text-brand-500/40 mb-3"></i>
+                <p class="text-brand-100/90 leading-relaxed italic">
+                    "Como pai, fiquei impressionado com o cuidado integral do COC. Além dos estudos, há suporte
+                    emocional e acompanhamento próximo. Minha filha cresceu muito como pessoa."
+                </p>
+            </div>
+            <div class="mt-auto flex items-center gap-4 pt-5 border-t border-brand-500/20">
+                <div
+                    class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                    CP</div>
+                <div class="flex-1">
+                    <p class="font-bold text-white text-sm">Carlos Pereira</p>
+                    <p class="text-xs text-brand-100/60">Pai de aluna · Araguaína</p>
+                </div>
+                <span
+                    class="inline-flex items-center rounded-md bg-brand-500/20 px-2 py-1 text-xs font-semibold text-brand-300 ring-1 ring-brand-600/30">
+                    <i data-lucide="heart" class="w-3 h-3 mr-1"></i>
+                    Família
+                </span>
+            </div>
+        </article>
+    </div>
+
+     Stats highlight
+    <div class="glass-card-dark rounded-3xl p-10 lg:p-14 border-0 shadow-[0_0_40px_-15px_rgba(101,166,36,0.3)]">
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+            <div class="group">
+                <p
+                    class="font-serif text-5xl font-bold text-rocket-400 mb-2 group-hover:scale-110 transition-transform inline-block">
+                    +150</p>
+                <p class="text-sm font-bold text-white uppercase tracking-wider">Medalhas</p>
+                <p class="text-xs text-brand-100/50 mt-1">nacionais e estaduais</p>
+            </div>
+            <div class="group">
+                <p
+                    class="font-serif text-5xl font-bold text-brand-400 mb-2 group-hover:scale-110 transition-transform inline-block">
+                    +800</p>
+                <p class="text-sm font-bold text-white uppercase tracking-wider">Alunos</p>
+                <p class="text-xs text-brand-100/50 mt-1">preparados desde 2018</p>
+            </div>
+            <div class="group">
+                <p
+                    class="font-serif text-5xl font-bold text-brand-400 mb-2 group-hover:scale-110 transition-transform inline-block">
+                    92%</p>
+                <p class="text-sm font-bold text-white uppercase tracking-wider">Aprovação</p>
+                <p class="text-xs text-brand-100/50 mt-1">em universidades públicas</p>
+            </div>
+            <div class="group">
+                <p
+                    class="font-serif text-5xl font-bold text-rocket-400 mb-2 group-hover:scale-110 transition-transform inline-block">
+                    12+</p>
+                <p class="text-sm font-bold text-white uppercase tracking-wider">Olimpíadas</p>
+                <p class="text-xs text-brand-100/50 mt-1">com preparação dedicada</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section> -->
+
+    <!-- =========================================================== -->
+    <!-- 6) NOSSA EQUIPE                                               -->
+    <!-- =========================================================== -->
+    <section id="equipe" class="py-8 lg:py-12 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="w-full mb-12">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-justify w-full">
+                    Professores de <span class="text-brand-400">elite</span>. Paixão por ensinar.
+                </h2>
+                <p class="text-lg text-brand-100/80 leading-relaxed">
+                    Nosso corpo docente reúne mestres, doutores e pesquisadores do IFTO apaixonados por formar a próxima
+                    geração de talentos brasileiros.
+                </p>
+            </div>
+
+            <!-- Marquee de Equipe -->
+            <div class="relative w-full flex overflow-hidden pause-marquee group py-5">
+                <div class="flex animate-marquee items-stretch w-max">
+                    <!-- Bloco Principal -->
+                    <div class="flex items-stretch gap-6 px-3 shrink-0">
+                        <!-- Professor 1 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-brand-600 to-brand-800 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-brand-300 shadow-md border border-brand-500/30">
+                                        <i data-lucide="calculator" class="w-3 h-3 mr-1"></i>
+                                        Matemática
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Prof. Dr. Marcos Lima</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Coordenador Pedagógico</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Doutor em Matemática
+                                    pela UFG. Treinador da delegação brasileira na IMO por 5 anos.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">UFG · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Professor 2 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-rocket-500 to-rocket-700 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-rocket-300 shadow-md border border-rocket-500/30">
+                                        <i data-lucide="atom" class="w-3 h-3 mr-1"></i>
+                                        Física
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Profª. Drª. Ana Ribeiro</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Líder em Física</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Doutora em Física
+                                    pela UFPE. Medalhista de prata na OBF em 2005. Autora de material didático.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">UFPE · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Professor 3 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-brand-700 to-brand-950 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-brand-300 shadow-md border border-brand-500/30">
+                                        <i data-lucide="flask-conical" class="w-3 h-3 mr-1"></i>
+                                        Química
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Prof. Me. João Teixeira</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Especialista em Química</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Mestre em Química
+                                    pela UnB. Orienta estudantes na OBQ há mais de 8 anos.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">UnB · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Professor 4 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-brand-500 to-brand-700 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-brand-300 shadow-md border border-brand-500/30">
+                                        <i data-lucide="bot" class="w-3 h-3 mr-1"></i>
+                                        Robótica
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Prof. Dr. Paulo Dias</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Coordenador de Robótica</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Doutor em Engenharia
+                                    pela USP. Líder de equipes da OBR com 3 ouros nacionais.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">USP · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Bloco Duplicado (aria-hidden) para rolagem infinita -->
+                    <div class="flex items-stretch gap-6 px-3 shrink-0" aria-hidden="true">
+                        <!-- Professor 1 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-brand-600 to-brand-800 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-brand-300 shadow-md border border-brand-500/30">
+                                        <i data-lucide="calculator" class="w-3 h-3 mr-1"></i>
+                                        Matemática
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Prof. Dr. Marcos Lima</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Coordenador Pedagógico</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Doutor em Matemática
+                                    pela UFG. Treinador da delegação brasileira na IMO por 5 anos.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">UFG · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Professor 2 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-rocket-500 to-rocket-700 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-rocket-300 shadow-md border border-rocket-500/30">
+                                        <i data-lucide="atom" class="w-3 h-3 mr-1"></i>
+                                        Física
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Profª. Drª. Ana Ribeiro</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Líder em Física</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Doutora em Física
+                                    pela UFPE. Medalhista de prata na OBF em 2005. Autora de material didático.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">UFPE · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Professor 3 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-brand-700 to-brand-950 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-brand-300 shadow-md border border-brand-500/30">
+                                        <i data-lucide="flask-conical" class="w-3 h-3 mr-1"></i>
+                                        Química
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Prof. Me. João Teixeira</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Especialista em Química</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Mestre em Química
+                                    pela UnB. Orienta estudantes na OBQ há mais de 8 anos.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">UnB · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Professor 4 -->
+                        <article
+                            class="w-72 whitespace-normal group glass-card-dark rounded-2xl overflow-hidden hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 flex flex-col">
+                            <div
+                                class="relative w-full h-56 bg-gradient-to-br from-brand-500 to-brand-700 overflow-hidden shrink-0">
+                                <div class="absolute inset-0 flex items-center justify-center text-white/30">
+                                    <i data-lucide="user-round" class="w-24 h-24"></i>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brand-950/80 backdrop-blur px-3 py-1 text-xs font-bold text-brand-300 shadow-md border border-brand-500/30">
+                                        <i data-lucide="bot" class="w-3 h-3 mr-1"></i>
+                                        Robótica
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-serif font-bold text-xl text-white mb-1">Prof. Dr. Paulo Dias</h3>
+                                <p class="text-sm text-brand-100/60 mb-3">Coordenador de Robótica</p>
+                                <p class="text-xs text-brand-100/70 leading-relaxed mb-4 flex-grow">Doutor em Engenharia
+                                    pela USP. Líder de equipes da OBR com 3 ouros nacionais.</p>
+                                <div class="flex items-center gap-2 text-brand-400 mt-auto">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 shrink-0"></i>
+                                    <span class="text-xs font-bold uppercase tracking-wider">USP · IFTO</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- =========================================================== -->
+    <!-- 7) TRILHAS DE ESTUDO POR OLIMPÍADA                            -->
+    <!-- =========================================================== -->
+    <section id="trilhas" class="py-8 lg:py-12 relative overflow-hidden z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="w-full mb-12">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-justify w-full">
+                    Baixe a trilha de estudos da sua <span class="text-rocket-400">olimpíada</span>.
+                </h2>
+                <p class="text-lg text-brand-100/80 leading-relaxed">
+                    Cada olimpíada apoiada pelo IFTO Campus Araguaína possui uma trilha de estudos em PDF com conteúdos,
+                    cronograma e referências. Baixe gratuitamente.
+                </p>
+            </div>
+
+            <!-- Grid de Trilhas por Olimpíada -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+                <!-- OBF - Física -->
+                <article id="inscricao"
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="atom" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de Física</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">OBF — Trilha completa com mecânica, termodinâmica,
+                        óptica, eletromagnetismo e física moderna.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+
+                <!-- OBMEP - Matemática -->
+                <article
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="calculator" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de Matemática</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">OBMEP — Trilha com álgebra, geometria,
+                        combinatória, teoria dos números e problemas olímpicos.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+
+                <!-- OLP - Português -->
+                <article
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="book-text" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de Português</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">OLP — Trilha com gêneros textuais, escrita
+                        criativa, leitura crítica e produção de textos.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+
+                <!-- Olimpíada de Literatura -->
+                <article
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="book-open" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de Literatura</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">Trilha com análise literária, movimentos culturais,
+                        obras clássicas e contemporâneas.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+
+                <!-- OBB - Biologia -->
+                <article
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="dna" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de Biologia</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">OBB — Trilha com citologia, genética, ecologia,
+                        fisiologia e biologia molecular.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+
+                <!-- Biotecnologia -->
+                <article
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="flask-conical" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de Biotecnologia</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">Trilha com engenharia genética, biotecnologia
+                        ambiental, industrial e aplicações modernas.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+
+                <!-- ONHB - História -->
+                <article
+                    class="glass-card-dark rounded-2xl p-6 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-500/10 hover:border-brand-500/40 transition-all duration-300 group flex flex-col">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-brand-900 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform shadow-[0_0_15px_-3px_rgba(101,166,36,0.2)]">
+                            <i data-lucide="scroll-text" class="w-7 h-7"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-white mb-2">Olimpíada de História</h3>
+                    <p class="text-sm text-brand-100/70 mb-4 flex-1">ONHB — Trilha com análise de fontes, história do
+                        Brasil, trabalho em equipe e pesquisa histórica.</p>
+                    <a href="#"
+                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Baixar Trilha Gratuita</span>
+                    </a>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+    </div>
+    </section>
+
+
+    <!-- =========================================================== -->
+    <!-- 9) FAQ — PERGUNTAS FREQUENTES                                 -->
+    <!-- =========================================================== -->
+    <section id="faq" class="py-8 lg:py-12 relative z-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-justify w-full">
+                    Tudo o que você precisa <span class="text-brand-400">saber</span>.
+                </h2>
+                <p class="text-lg text-brand-100/80 leading-relaxed">
+                    Respostas claras para as dúvidas mais comuns.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <details
+                    class="glass-card-dark rounded-2xl border-0 overflow-hidden hover:bg-brand-900/30 transition-colors group"
+                    open>
+                    <summary class="p-6 flex items-center justify-between gap-4 cursor-pointer">
+                        <h3 class="font-serif font-bold text-lg text-white flex-1 text-justify w-full">A preparação no
+                            COC é realmente gratuita? Como funciona?</h3>
+                        <div
+                            class="faq-icon w-8 h-8 rounded-full bg-brand-900 flex items-center justify-center text-brand-400 shrink-0 transition-transform group-hover:scale-110">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-brand-100/70 leading-relaxed border-t border-brand-500/10 pt-4 mt-2 text-justify w-full">
+                        Sim, 100% gratuita. Todo o material, acompanhamento e orientação fornecidos pelo <strong
+                            class="text-brand-300">Centro Olímpico de Conhecimento - Campus Araguaina (COC)</strong> são
+                        subsidiados pelo Campus Araguaína - IFTO. Não há mensalidades ou taxas escondidas para os alunos
+                        que participam do nosso projeto.
+                    </div>
+                </details>
+
+                <details
+                    class="glass-card-dark rounded-2xl border-0 overflow-hidden hover:bg-brand-900/30 transition-colors group">
+                    <summary class="p-6 flex items-center justify-between gap-4 cursor-pointer">
+                        <h3 class="font-serif font-bold text-lg text-white flex-1 text-justify w-full">Como funcionam as
+                            Trilhas de Estudo?</h3>
+                        <div
+                            class="faq-icon w-8 h-8 rounded-full bg-brand-900 flex items-center justify-center text-brand-400 shrink-0 transition-transform group-hover:scale-110">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-brand-100/70 leading-relaxed border-t border-brand-500/10 pt-4 mt-2 text-justify w-full">
+                        Nossos professores especialistas criaram <strong class="text-brand-300">Trilhas de
+                            Estudo</strong> específicas para cada olimpíada (Matemática, Física, História, etc). Você
+                        escolhe sua área de interesse, baixa o material gratuitamente aqui no site e começa a estudar no
+                        seu ritmo, seguindo um cronograma passo a passo. Além disso, verifique o professor responsável
+                        pela olimpiada para saber como se preparar para a olimpada
+                    </div>
+                </details>
+
+                <details
+                    class="glass-card-dark rounded-2xl border-0 overflow-hidden hover:bg-brand-900/30 transition-colors group">
+                    <summary class="p-6 flex items-center justify-between gap-4 cursor-pointer">
+                        <h3 class="font-serif font-bold text-lg text-white flex-1 text-justify w-full">Vou ter
+                            acompanhamento dos professores ou é só o material?</h3>
+                        <div
+                            class="faq-icon w-8 h-8 rounded-full bg-brand-900 flex items-center justify-center text-brand-400 shrink-0 transition-transform group-hover:scale-110">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-brand-100/70 leading-relaxed border-t border-brand-500/10 pt-4 mt-2 text-justify w-full">
+                        Você não estará sozinho! Os alunos que se engajam nas Trilhas de Estudo recebem <strong
+                            class="text-brand-300">acompanhamento direto dos professores que lideram cada
+                            olimpíada</strong> no Campus Araguaina. Você terá suporte contínuo para tirar dúvidas,
+                        receber mentorias
+                        estratégicas e manter o foco. Procure o professor da área.
+                    </div>
+                </details>
+
+                <details
+                    class="glass-card-dark rounded-2xl border-0 overflow-hidden hover:bg-brand-900/30 transition-colors group">
+                    <summary class="p-6 flex items-center justify-between gap-4 cursor-pointer">
+                        <h3 class="font-serif font-bold text-lg text-white flex-1 text-justify w-full">Preciso ter
+                            experiência ou notas altas para participar?</h3>
+                        <div
+                            class="faq-icon w-8 h-8 rounded-full bg-brand-900 flex items-center justify-center text-brand-400 shrink-0 transition-transform group-hover:scale-110">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-brand-100/70 leading-relaxed border-t border-brand-500/10 pt-4 mt-2 text-justify w-full">
+                        Não. O COC é exatamente o lugar para você <strong class="text-brand-300">começar</strong>. O que
+                        realmente importa é a sua disposição em aprender, curiosidade intelectual e comprometimento com
+                        as trilhas. Nossos professores vão te ajudar a construir a base necessária do zero absoluto.
+                    </div>
+                </details>
+
+                <details
+                    class="glass-card-dark rounded-2xl border-0 overflow-hidden hover:bg-brand-900/30 transition-colors group">
+                    <summary class="p-6 flex items-center justify-between gap-4 cursor-pointer">
+                        <h3 class="font-serif font-bold text-lg text-white flex-1 text-justify w-full">Como o COC ajuda
+                            no dia da inscrição e da prova?</h3>
+                        <div
+                            class="faq-icon w-8 h-8 rounded-full bg-brand-900 flex items-center justify-center text-brand-400 shrink-0 transition-transform group-hover:scale-110">
+                            <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                        </div>
+                    </summary>
+                    <div
+                        class="px-6 pb-6 text-brand-100/70 leading-relaxed border-t border-brand-500/10 pt-4 mt-2 text-justify w-full">
+                        Nós oferecemos <strong class="text-brand-300">orientação completa</strong> em todo o processo
+                        logístico: ajudamos a lembrar os prazos, entender os regulamentos de cada olimpíada e realizar
+                        as inscrições nas plataformas corretamente, dando respaldo institucional para que você foque
+                        apenas na prova.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- =========================================================== -->
+    <!-- FOOTER                                                        -->
+    <!-- =========================================================== -->
+    <footer
+        class="relative bg-brand-950/60 backdrop-blur-3xl text-brand-100 border-t-4 border-rocket-500 pt-16 pb-8 overflow-hidden z-20">
+        <!-- Decorative background -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-700/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-rocket-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand Column -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-5">
+                        <img src="Logo OFICIAL.webp" alt="COC Logo"
+                            class="h-14 w-auto bg-brand-900/50 backdrop-blur-sm border border-brand-500/20 rounded-lg p-1.5 drop-shadow-md brightness-150">
+                        <div>
+                            <h3 class="font-serif font-bold text-white text-xl leading-tight text-justify w-full">Centro
+                                Olímpico<br>de
+                                Conhecimento</h3>
+                            <p class="text-brand-300 text-xs">IFTO Campus Araguaína</p>
+                        </div>
+                    </div>
+                    <p class="text-brand-100/70 leading-relaxed mb-6 text-justify w-full">
+                        Preparação de excelência para as Olimpíadas Brasileiras. Lançando o conhecimento ao sucesso, um
+                        estudante por vez.
+                    </p>
+                </div>
+
+                <!-- Navegação -->
+                <div>
+                    <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Navegação</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#sobre"
+                                class="hover:text-white transition-colors flex items-center gap-2 text-brand-100/80"><i
+                                    data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Sobre o COC</a></li>
+
+                        <li><a href="#cursos"
+                                class="hover:text-white transition-colors flex items-center gap-2 text-brand-100/80"><i
+                                    data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Cursos</a></li>
+                        <li><a href="#equipe"
+                                class="hover:text-white transition-colors flex items-center gap-2 text-brand-100/80"><i
+                                    data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Equipe</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Contato</h4>
+                    <ul class="space-y-3 text-sm text-brand-100/80">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-400 mt-0.5 shrink-0"></i>
+                            <span>IFTO Campus Araguaína<br>Av. Paraguai · Setor Cimba</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-400 shrink-0"></i>
+                            <a href="mailto:coc@ifto.edu.br"
+                                class="hover:text-white transition-colors">coc@ifto.edu.br</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-400 shrink-0"></i>
+                            <a href="tel:+5563000000000" class="hover:text-white transition-colors">(63) 0000-0000</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div
+                class="border-t border-brand-800/50 pt-8 pb-4 flex flex-col items-center justify-center text-center w-full gap-4 text-xs text-brand-100/60">
+                <p class="w-full">&copy; 2026 COC — Centro Olímpico de Conhecimento · IFTO Campus Araguaína. Todos os
+                    direitos reservados.</p>
+                <div class="flex justify-center gap-6 w-full">
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="#" class="hover:text-white transition-colors">LGPD</a>
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Generate star/particle field — visible on light background
+        (function () {
+            const field = document.getElementById('star-field');
+            if (!field) return;
+            // Colors visible on light (slate-50) background
+            const colors = [
+                '#487329', // brand-700 (dark green)
+                '#548C3A', // brand-600
+                '#65A624', // brand-500 (vibrant green)
+                '#a31f2c', // rocket-700 (dark red)
+                '#D93B48', // rocket-500
+                '#c22a38', // rocket-600
+            ];
+            const count = 55;
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * -50 + '%';
+                star.style.animationDuration = (4 + Math.random() * 9) + 's';
+                star.style.animationDelay = (Math.random() * 12) + 's';
+                const size = (1.5 + Math.random() * 2.5) + 'px';
+                star.style.width = size;
+                star.style.height = size;
+                star.style.background = color;
+                star.style.opacity = 0.55 + Math.random() * 0.45; // 0.55-1.0
+                field.appendChild(star);
+            }
+        })();
+
+        // Menu mobile toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Fechar ao clicar num link
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
+        // Navegação sticky com efeito ao rolar
+        const nav = document.querySelector('nav');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 20) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // FAQ: fechar outros ao abrir um
+        document.querySelectorAll('details').forEach((details) => {
+            details.addEventListener('toggle', (e) => {
+                if (details.open) {
+                    document.querySelectorAll('details').forEach((other) => {
+                        if (other !== details) other.open = false;
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer para animações fade-in no scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            const selectorsToAnimate = [
+                '#sobre .grid > div',
+                '.max-w-3xl.mb-16',
+                '.text-center.mb-16',
+                '#cursos article',
+                '#depoimentos article',
+                'details',
+                '.pause-marquee',
+                '.lg\\:col-span-2',
+                'footer .grid > div:not(.lg\\:col-span-2)'
+            ];
+
+            selectorsToAnimate.forEach(selector => {
+                document.querySelectorAll(selector).forEach((el, index) => {
+                    // Evitar aplicar a cards internos dentro do marquee de equipe
+                    if (!el.closest('.animate-marquee')) {
+                        el.classList.add('scroll-animate');
+                        // Stagger dinâmico para grids de cards e footer para carregar em sequência (cascata)
+                        if (['ARTICLE', 'DETAILS'].includes(el.tagName)) {
+                            el.style.transitionDelay = `${(index % 4) * 150}ms`;
+                        } else if (selector.includes('footer')) {
+                            el.style.transitionDelay = `${(index + 1) * 150}ms`;
+                        } else if (selector.includes('#sobre')) {
+                            el.style.transitionDelay = `${index * 200}ms`;
+                        }
+                    }
+                });
+            });
+
+            const once = true;
+            if (!window.__inViewIO) {
+                window.__inViewIO = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("animate");
+                            if (once) window.__inViewIO.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+            }
+
+            document.querySelectorAll(".scroll-animate").forEach((el) => {
+                window.__inViewIO.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
