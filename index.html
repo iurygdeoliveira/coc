@@ -88,6 +88,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        /* Previne o vídeo de explodir antes do Tailwind carregar (FOUC) */
+        .foguete-video {
+            width: 100%;
+            height: auto;
+            max-width: 550px;
+            transform: scale(1.25);
+        }
+        @media (min-width: 768px) { .foguete-video { transform: scale(1.35); } }
+        @media (min-width: 1024px) { .foguete-video { max-width: 750px; transform: scale(1.6); } }
+        @media (min-width: 1280px) { .foguete-video { max-width: 900px; } }
+
         /* Animação Scroll Fade-In (Estilo Lumina) */
         .scroll-animate {
             opacity: 0;
@@ -516,8 +527,8 @@
                         </div>
 
                         <!-- Logo COC -->
-                        <video src="foguete.webm" poster="Logo OFICIAL.webp" autoplay loop muted playsinline
-                            class="relative z-10 w-full max-w-[550px] lg:max-w-[750px] xl:max-w-[900px] scale-125 md:scale-[1.35] lg:scale-[1.6] h-auto"></video>
+                        <video src="foguete.webm" poster="Logo OFICIAL.webp" width="550" autoplay loop muted playsinline
+                            class="foguete-video relative z-10 w-full max-w-[550px] lg:max-w-[750px] xl:max-w-[900px] scale-125 md:scale-[1.35] lg:scale-[1.6] h-auto"></video>
                     </div>
                 </div>
             </div>
