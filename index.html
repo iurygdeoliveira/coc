@@ -95,9 +95,25 @@
             max-width: 550px;
             transform: scale(1.25);
         }
-        @media (min-width: 768px) { .foguete-video { transform: scale(1.35); } }
-        @media (min-width: 1024px) { .foguete-video { max-width: 750px; transform: scale(1.6); } }
-        @media (min-width: 1280px) { .foguete-video { max-width: 900px; } }
+
+        @media (min-width: 768px) {
+            .foguete-video {
+                transform: scale(1.35);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .foguete-video {
+                max-width: 750px;
+                transform: scale(1.6);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .foguete-video {
+                max-width: 900px;
+            }
+        }
 
         /* Animação Scroll Fade-In (Estilo Lumina) */
         .scroll-animate {
@@ -527,8 +543,8 @@
                         </div>
 
                         <!-- Logo COC -->
-                        <video src="foguete.webm" poster="Logo OFICIAL.webp" width="550" autoplay loop muted playsinline
-                            class="foguete-video relative z-10 w-full max-w-[550px] lg:max-w-[750px] xl:max-w-[900px] scale-125 md:scale-[1.35] lg:scale-[1.6] h-auto"></video>
+                        <video src="foguete.webm" width="550" autoplay loop muted playsinline
+                            class="foguete-video relative z-10 w-full max-w-[700px] lg:max-w-[750px] xl:max-w-[900px] scale-[1.5] md:scale-[1.6] lg:scale-[1.6] h-auto"></video>
                     </div>
                 </div>
             </div>
@@ -543,7 +559,7 @@
             <div class="flex flex-wrap justify-center gap-6 md:gap-12 text-sm md:text-base font-bold text-brand-100/90">
                 <div class="flex items-center gap-2">
                     <i data-lucide="building-2" class="w-5 h-5 text-brand-400"></i>
-                    <span>Iniciativa oficial do IFTO</span>
+                    <span>Iniciativa oficial do IFTO - Campus Araguaína</span>
                 </div>
                 <div class="flex items-center gap-2">
                     <i data-lucide="graduation-cap" class="w-5 h-5 text-brand-400"></i>
@@ -826,7 +842,7 @@
             </div>
 
             <!-- Marquee de Equipe -->
-            <div class="relative w-full flex overflow-hidden pause-marquee group py-5">
+            <div class="relative w-full flex overflow-hidden group py-5">
                 <div class="flex animate-marquee items-stretch w-max">
                     <!-- Bloco Principal -->
                     <div class="flex items-stretch gap-6 px-3 shrink-0">
@@ -1094,9 +1110,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">OBF — Trilha completa com mecânica, termodinâmica,
                         óptica, eletromagnetismo e física moderna.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
 
@@ -1113,9 +1129,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">OBMEP — Trilha com álgebra, geometria,
                         combinatória, teoria dos números e problemas olímpicos.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
 
@@ -1132,9 +1148,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">OLP — Trilha com gêneros textuais, escrita
                         criativa, leitura crítica e produção de textos.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
 
@@ -1151,9 +1167,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">Trilha com análise literária, movimentos culturais,
                         obras clássicas e contemporâneas.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
 
@@ -1170,9 +1186,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">OBB — Trilha com citologia, genética, ecologia,
                         fisiologia e biologia molecular.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
 
@@ -1189,9 +1205,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">Trilha com engenharia genética, biotecnologia
                         ambiental, industrial e aplicações modernas.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
 
@@ -1208,9 +1224,9 @@
                     <p class="text-sm text-brand-100/70 mb-4 flex-1">ONHB — Trilha com análise de fontes, história do
                         Brasil, trabalho em equipe e pesquisa histórica.</p>
                     <a href="#"
-                        class="mt-auto inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
+                        class="mt-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-4 py-2.5 rounded-lg font-bold text-sm transition-colors group/btn">
                         <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>Baixar Trilha Gratuita</span>
+                        <span>Baixar Material de Estudo</span>
                     </a>
                 </article>
             </div>
@@ -1225,13 +1241,13 @@
     <!-- =========================================================== -->
     <!-- 9) FAQ — PERGUNTAS FREQUENTES                                 -->
     <!-- =========================================================== -->
-    <section id="faq" class="py-8 lg:py-12 relative z-20">
+    <section id="faq" class="pt-0 pb-8 lg:pt-2 lg:pb-12 relative z-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-justify w-full">
+            <div class="text-center mb-12 flex flex-col items-center">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6 leading-tight text-center">
                     Tudo o que você precisa <span class="text-brand-400">saber</span>.
                 </h2>
-                <p class="text-lg text-brand-100/80 leading-relaxed">
+                <p class="text-lg text-brand-100/80 leading-relaxed text-center">
                     Respostas claras para as dúvidas mais comuns.
                 </p>
             </div>
@@ -1349,58 +1365,61 @@
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-rocket-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 lg:gap-10 mb-12 text-center md:text-left">
                 <!-- Brand Column -->
-                <div class="lg:col-span-2">
-                    <div class="flex items-center gap-3 mb-5">
+                <div class="md:col-span-2">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-5">
                         <img src="Logo OFICIAL.webp" alt="COC Logo"
                             class="h-14 w-auto bg-brand-900/50 backdrop-blur-sm border border-brand-500/20 rounded-lg p-1.5 drop-shadow-md brightness-150">
                         <div>
-                            <h3 class="font-serif font-bold text-white text-xl leading-tight text-justify w-full">Centro
-                                Olímpico<br>de
-                                Conhecimento</h3>
+                            <h3 class="font-serif font-bold text-white text-xl leading-tight">Centro Olímpico<br>de Conhecimento</h3>
                             <p class="text-brand-300 text-xs">IFTO Campus Araguaína</p>
                         </div>
                     </div>
-                    <p class="text-brand-100/70 leading-relaxed mb-6 text-justify w-full">
-                        Preparação de excelência para as Olimpíadas Brasileiras. Lançando o conhecimento ao sucesso, um
-                        estudante por vez.
+                    <p class="text-brand-100/70 leading-relaxed mb-6 mx-auto md:mx-0 max-w-sm md:max-w-none">
+                        Preparação de excelência para as Olimpíadas Brasileiras. Lançando o conhecimento ao sucesso, um estudante por vez.
                     </p>
                 </div>
 
                 <!-- Navegação -->
-                <div>
+                <div class="md:col-span-1">
                     <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Navegação</h4>
                     <ul class="space-y-3 text-sm">
                         <li><a href="#sobre"
-                                class="hover:text-white transition-colors flex items-center gap-2 text-brand-100/80"><i
+                                class="hover:text-white transition-colors flex items-center justify-center md:justify-start gap-2 text-brand-100/80"><i
                                     data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Sobre o COC</a></li>
-
-                        <li><a href="#cursos"
-                                class="hover:text-white transition-colors flex items-center gap-2 text-brand-100/80"><i
-                                    data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Cursos</a></li>
                         <li><a href="#equipe"
-                                class="hover:text-white transition-colors flex items-center gap-2 text-brand-100/80"><i
+                                class="hover:text-white transition-colors flex items-center justify-center md:justify-start gap-2 text-brand-100/80"><i
                                     data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Equipe</a></li>
+                        <li><a href="#trilhas"
+                                class="hover:text-white transition-colors flex items-center justify-center md:justify-start gap-2 text-brand-100/80"><i
+                                    data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Material de Estudo</a></li>
+                        <li><a href="#faq"
+                                class="hover:text-white transition-colors flex items-center justify-center md:justify-start gap-2 text-brand-100/80"><i
+                                    data-lucide="chevron-right" class="w-4 h-4 text-brand-400"></i> Dúvidas Frequentes</a></li>
                     </ul>
                 </div>
 
                 <!-- Contato -->
-                <div>
+                <div class="md:col-span-1">
                     <h4 class="font-bold text-white mb-4 uppercase tracking-wider text-sm">Contato</h4>
                     <ul class="space-y-3 text-sm text-brand-100/80">
-                        <li class="flex items-start gap-2">
+                        <li class="flex items-start justify-center md:justify-start gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-brand-400 mt-0.5 shrink-0"></i>
-                            <span>IFTO Campus Araguaína<br>Av. Paraguai · Setor Cimba</span>
+                            <span class="text-center md:text-left">IFTO Campus Araguaína<br>Av. Paraguai · Setor Cimba</span>
                         </li>
-                        <li class="flex items-center gap-2">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
+                            <i data-lucide="user" class="w-4 h-4 text-brand-400 shrink-0"></i>
+                            <span>Resp: Marinalva Lima</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-2">
                             <i data-lucide="mail" class="w-4 h-4 text-brand-400 shrink-0"></i>
-                            <a href="mailto:coc@ifto.edu.br"
-                                class="hover:text-white transition-colors">coc@ifto.edu.br</a>
+                            <a href="mailto:marinalva.lima@ifto.edu.br"
+                                class="hover:text-white transition-colors">marinalva.lima@ifto.edu.br</a>
                         </li>
-                        <li class="flex items-center gap-2">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
                             <i data-lucide="phone" class="w-4 h-4 text-brand-400 shrink-0"></i>
-                            <a href="tel:+5563000000000" class="hover:text-white transition-colors">(63) 0000-0000</a>
+                            <a href="tel:+556334110328" class="hover:text-white transition-colors">(63) 3411-0328</a>
                         </li>
                     </ul>
                 </div>
@@ -1411,11 +1430,6 @@
                 class="border-t border-brand-800/50 pt-8 pb-4 flex flex-col items-center justify-center text-center w-full gap-4 text-xs text-brand-100/60">
                 <p class="w-full">&copy; 2026 COC — Centro Olímpico de Conhecimento · IFTO Campus Araguaína. Todos os
                     direitos reservados.</p>
-                <div class="flex justify-center gap-6 w-full">
-                    <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
-                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
-                    <a href="#" class="hover:text-white transition-colors">LGPD</a>
-                </div>
             </div>
         </div>
 
